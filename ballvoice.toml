@@ -1,0 +1,26 @@
+# ballvoice settings for The Ball Remembers.
+# Paths are relative to this file. Every setting is optional.
+
+[voice]
+# One Kokoro voice ("bm_george") or a weighted blend ("bm_george:60,bm_fable:40").
+# Run `ballvoice audition` to compare, then set the winner here.
+voice = "bm_george:60,bm_fable:40"
+lang = "en-gb"          # en-gb or en-us
+speed = 1.0             # 0.5 - 2.0; a shot can override with "tts_speed"
+
+[script]
+words_per_minute = 150  # used to estimate whether a line fits its shot
+max_sentence_words = 18
+max_hook_words = 12
+
+[render]
+sentence_pause = 0.25   # seconds after . ! ? when Kokoro splits a long line
+clause_pause = 0.1      # seconds after , ; :
+tail_ms = 120           # silence kept after every clip
+peak_dbfs = -1.0        # loudest peak across all clips
+fps = 30                # frame numbers in voice_manifest.json
+
+[paths]
+models_dir = "models"
+lexicon = "lexicon.json"
+out_dir = "build"

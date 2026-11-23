@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ballvoice"
+version = "0.1.0"
+description = "Narration for The Ball Remembers: PRODUCTION_JSON in, one Kokoro voice clip per shot out."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11,<3.14"
+authors = [{ name = "Suraj Pawar" }]
+keywords = ["tts", "kokoro", "narration", "remotion", "football"]
+dependencies = [
+    "kokoro-onnx>=0.6.1,<0.7",
+    "numpy>=1.26",
+    "soundfile>=0.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+ballvoice = "ballvoice.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ballvoice"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

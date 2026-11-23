@@ -1,0 +1,26 @@
+# Kokoro model files (download with: ballvoice setup)
+models/
+*.onnx
+voices-*.bin
+
+# Rendered audio
+build/
+auditions/
+*.wav
+*.mp3
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+dist/
+.uv/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

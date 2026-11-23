@@ -1,0 +1,114 @@
+{
+  "_note": "Sample for testing ballvoice. The script has not been source-checked; it is not a publishable package.",
+  "video_id": "tbr-sample-panenka",
+  "channel": "The Ball Remembers",
+  "format": "SHORT",
+  "pillar": "Untold Histories",
+  "instagram_highlight": "Histories",
+  "era": "PAST",
+  "title": "The penalty that made me float",
+  "hook": {
+    "spoken": "Every legend has kicked me. Only one made me float.",
+    "on_screen": "ONLY ONE MADE ME FLOAT",
+    "gold_word": "FLOAT",
+    "type": "The ball's confession"
+  },
+  "tts": { "engine": "kokoro", "voice": "", "words_per_minute": 150 },
+  "pronunciations": [
+    { "word": "Hoeneß", "say_as": "HUR-ness" },
+    { "word": "Uli", "say_as": "OO-lee" },
+    { "word": "Antonín", "say_as": "AN-toh-neen" },
+    { "word": "Maier", "say_as": "MY-er" }
+  ],
+  "shots": [
+    {
+      "id": "S01", "start": 0.0, "end": 3.8,
+      "vo": "Every legend has kicked me. Only one made me float.",
+      "tts_text": "Every legend has kicked me. Only one made me float.",
+      "visual": "Brand ball inside the gold rewind ring, pulsing", "method": "BALL NARRATOR", "tier": "HERO",
+      "era": "PAST", "transition_in": "CUT", "image_prompt": "", "references": ["ref_ball_logo"], "motion_prompt": "",
+      "aspect_ratio": "9:16", "duration_s": 5, "on_screen_text": "ONLY ONE MADE ME FLOAT", "photo_credit": "",
+      "sfx": "ball thud", "music_cue": "strings swell"
+    },
+    {
+      "id": "S02", "start": 3.8, "end": 10.8,
+      "vo": "Belgrade. June 1976. The European Championship final went all the way to penalties.",
+      "tts_text": "Belgrade. June, nineteen seventy-six. The European Championship final went all the way to penalties.",
+      "visual": "Night stadium on cream paper, floodlights", "method": "STILL+PUSH", "tier": "DRAFT",
+      "era": "PAST", "transition_in": "REWIND", "image_prompt": "", "references": ["ref_stadium_night"], "motion_prompt": "",
+      "aspect_ratio": "9:16", "duration_s": 6, "on_screen_text": "1976", "photo_credit": "",
+      "sfx": "rewind whoosh", "music_cue": ""
+    },
+    {
+      "id": "S03", "start": 10.8, "end": 17.0,
+      "vo": "West Germany against Czechoslovakia. Then Uli Hoeneß sent me sailing high over the bar.",
+      "tts_text": "West Germany against Czechoslovakia. Then Uli Hoeneß sent me sailing high over the bar.",
+      "visual": "Ball arcing over a crossbar, white kit silhouette", "method": "IMAGE-TO-VIDEO", "tier": "DRAFT",
+      "era": "PAST", "transition_in": "CUT", "image_prompt": "", "references": ["ref_kit_white"], "motion_prompt": "",
+      "aspect_ratio": "9:16", "duration_s": 5, "on_screen_text": "", "photo_credit": "",
+      "sfx": "crowd groan", "music_cue": ""
+    },
+    {
+      "id": "S04", "start": 17.0, "end": 23.5,
+      "vo": "One more goal and Czechoslovakia were champions of Europe. Walking up to me... Antonín Panenka.",
+      "tts_text": "One more goal and Czechoslovakia were champions of Europe. Walking up to me... Antonín Panenka.",
+      "visual": "Player in red, number 7, walking to the spot", "method": "STILL+PUSH", "tier": "DRAFT",
+      "era": "PAST", "transition_in": "CUT", "image_prompt": "", "references": ["ref_kit_red"], "motion_prompt": "",
+      "aspect_ratio": "9:16", "duration_s": 6, "on_screen_text": "", "photo_credit": "",
+      "sfx": "heartbeat", "music_cue": "drop to piano"
+    },
+    {
+      "id": "S05", "start": 23.5, "end": 30.3,
+      "vo": "Sepp Maier dived. Panenka didn't blast me. He chipped me, softly, straight down the middle.",
+      "tts_text": "Sepp Maier dived. [pause:0.3] Panenka didn't blast me. He chipped me, softly, straight down the middle.",
+      "visual": "Keeper diving, ball floating the other way", "method": "IMAGE-TO-VIDEO", "tier": "HERO",
+      "era": "PAST", "transition_in": "CUT", "image_prompt": "", "references": ["ref_kit_red", "ref_ball_logo"], "motion_prompt": "",
+      "aspect_ratio": "9:16", "duration_s": 6, "on_screen_text": "", "photo_credit": "",
+      "sfx": "", "music_cue": "silence"
+    },
+    {
+      "id": "S06", "start": 30.3, "end": 36.2,
+      "vo": "I floated into the net like a feather. Czechoslovakia won the shootout, 5-3.",
+      "tts_text": "I floated into the net like a feather. Czechoslovakia won the shootout, five to three.",
+      "visual": "Ball settling in the net, gold light", "method": "STILL+PUSH", "tier": "DRAFT",
+      "era": "PAST", "transition_in": "CUT", "image_prompt": "", "references": ["ref_ball_logo"], "motion_prompt": "",
+      "aspect_ratio": "9:16", "duration_s": 6, "on_screen_text": "5-3", "photo_credit": "",
+      "sfx": "crowd swell", "music_cue": "brass hit"
+    },
+    {
+      "id": "S07", "start": 36.2, "end": 42.2,
+      "vo": "Today, every chipped penalty in the world carries his name. They call it a Panenka.",
+      "tts_text": "Today, every chipped penalty in the world carries his name. They call it a Panenka.",
+      "visual": "Montage of chipped penalties in different kit colours", "method": "MOTION GRAPHIC", "tier": "DRAFT",
+      "era": "PRESENT", "transition_in": "WHIP", "image_prompt": "", "references": [], "motion_prompt": "",
+      "aspect_ratio": "9:16", "duration_s": 6, "on_screen_text": "THE PANENKA", "photo_credit": "",
+      "sfx": "", "music_cue": ""
+    },
+    {
+      "id": "S08", "start": 42.2, "end": 46.4,
+      "vo": "I was there. And honestly? I can still feel that chip.",
+      "tts_text": "I was there. And honestly? I can still feel that chip.",
+      "visual": "Brand ball inside the gold rewind ring", "method": "BALL NARRATOR", "tier": "DRAFT",
+      "era": "PAST", "transition_in": "REWIND", "image_prompt": "", "references": ["ref_ball_logo"], "motion_prompt": "",
+      "aspect_ratio": "9:16", "duration_s": 5, "on_screen_text": "", "photo_credit": "",
+      "sfx": "rewind whoosh", "music_cue": "loop to start"
+    },
+    {
+      "id": "S09", "start": 46.4, "end": 48.4,
+      "vo": "", "tts_text": "",
+      "visual": "End card", "method": "MOTION GRAPHIC", "tier": "DRAFT",
+      "era": "PRESENT", "transition_in": "CUT", "image_prompt": "", "references": ["ref_ball_logo"], "motion_prompt": "",
+      "aspect_ratio": "9:16", "duration_s": 2, "on_screen_text": "Follow @theballremembers", "photo_credit": "",
+      "sfx": "", "music_cue": ""
+    }
+  ],
+  "music_prompt": "",
+  "thumbnails": [],
+  "description": "",
+  "hashtags": ["#TheBallRemembers", "#football"],
+  "pinned_comment": "",
+  "instagram_caption": "",
+  "sources": [],
+  "photo_credits": [],
+  "ai_disclosure": false
+}
