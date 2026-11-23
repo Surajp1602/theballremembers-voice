@@ -4,6 +4,8 @@ About 20 minutes the first time, most of it the one-time download. Commands are 
 
 ## 1. Install (once)
 
+> **Short on space on C:?** Use [Install on D: instead](#install-on-d-instead) below. Everything (uv, Python, the package cache, the repo and the ~350 MB model) then lives on D:, about 1 GB in total.
+
 **uv** installs the right Python by itself, so you don't need to install Python first. Open PowerShell:
 
 ```powershell
@@ -27,6 +29,56 @@ uv run ballvoice setup
   voices-v1.0.bin: downloaded and verified
 Ready. Try: ballvoice audition
 ```
+
+### Install on D: instead
+
+uv normally keeps its own program, its Python downloads and its package cache under your user folder on C:. Four settings move them to D:. Keep the cache on the same drive as the project, because uv then hard-links packages instead of copying them, which saves space.
+
+**a) Point uv at D:.** Paste this into PowerShell. It saves the settings permanently for your Windows user and applies them to this window too:
+
+```powershell
+$uvDirs = @{
+  UV_INSTALL_DIR        = "D:\uv\bin"         # the uv program
+  UV_CACHE_DIR          = "D:\uv\cache"       # downloaded packages
+  UV_PYTHON_INSTALL_DIR = "D:\uv\python"      # Python itself
+  UV_PYTHON_BIN_DIR     = "D:\uv\python-bin"  # python.exe shortcuts
+}
+foreach ($name in $uvDirs.Keys) {
+  New-Item -ItemType Directory -Force $uvDirs[$name] | Out-Null
+  [Environment]::SetEnvironmentVariable($name, $uvDirs[$name], "User")
+  Set-Item "env:$name" $uvDirs[$name]
+}
+```
+
+**b) Install uv into `D:\uv\bin`.** Use this installer, not winget, which always installs to C:. It adds `D:\uv\bin` to your PATH.
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+**c) Close and reopen PowerShell, then check every path starts with `D:\`:**
+
+```powershell
+uv --version
+uv cache dir     # D:\uv\cache
+uv python dir    # D:\uv\python
+```
+
+**d) Clone and set up on D:.** The model files and every render stay inside the project folder:
+
+```powershell
+cd D:\
+mkdir Projects -Force | Out-Null
+cd D:\Projects
+git clone https://github.com/Surajp1602/theballremembers-voice.git
+cd theballremembers-voice
+uv sync --extra dev
+uv run ballvoice setup
+```
+
+Then carry on with step 2, running everything from `D:\Projects\theballremembers-voice`.
+
+**Already installed something on C:?** Before step (a), free that space with `uv cache clean` and `uv python uninstall --all` (both act on the old C: locations), then `winget uninstall astral-sh.uv` if you used winget. To reclaim more later, `uv cache prune` removes cached packages nothing uses.
 
 ## 2. Run the smoke test (2-3 minutes)
 
@@ -150,6 +202,9 @@ Paste any warnings back to the LLM and ask for a corrected PRODUCTION_JSON, or f
 | A name is read as letters | Add it to `pronunciations` or the lexicon with a `say_as` respelling. |
 | `ballvoice: Voice 'x' is not in the voices file` | `uv run ballvoice voices` shows the exact names. |
 | IPA prints as `?` in the console | Only the display; the audio is fine. Use Windows Terminal for full Unicode. |
+| `uv cache dir` still shows a C:\ path | The settings didn't reach this window: close and reopen PowerShell. Check them with `[Environment]::GetEnvironmentVariable("UV_CACHE_DIR", "User")`. |
+| A warning that `D:\uv\python-bin` is not on your PATH | Harmless. The project runs from its own `.venv`, so ignore it. |
+| "Failed to hardlink files; falling back to full copy" | The cache and the project are on different drives (or D: isn't NTFS). It still works, it just uses more space. Keep both on D:, or silence it with `setx UV_LINK_MODE copy`. |
 
 ## macOS / Linux
 
