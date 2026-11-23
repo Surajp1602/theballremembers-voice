@@ -208,7 +208,8 @@ def lint(
                     names.setdefault(word, set()).add(where)
 
         words = count_words(spoken)
-        estimate = words / wpm * 60 + pause
+        speed = shot.speed if shot.speed is not None else config.speed
+        estimate = words / wpm * 60 / max(speed, 0.5) + pause
         report.total_words += words
         report.estimate += estimate
         report.shots.append(ShotStats(where, shot.window, words, estimate))

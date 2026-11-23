@@ -21,6 +21,13 @@ def test_a_long_line_pushes_the_next_one_back():
     assert s3.placed_at == pytest.approx(8.0) and s3.fits
 
 
+def test_padded_silence_does_not_count_as_running_long():
+    (placement,) = plan_timeline([("S01", 0.0, 4.0, 4.1)], tail=0.12)
+    assert placement.overflow == 0.0 and placement.fits
+    (placement,) = plan_timeline([("S01", 0.0, 4.0, 4.3)], tail=0.12)
+    assert placement.overflow == pytest.approx(0.18) and not placement.fits
+
+
 def test_shots_are_placed_in_time_order():
     placements = plan_timeline([("S02", 5.0, 9.0, 1.0), ("S01", 0.0, 5.0, 1.0)])
     assert [p.id for p in placements] == ["S01", "S02"]

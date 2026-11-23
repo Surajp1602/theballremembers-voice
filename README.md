@@ -21,19 +21,18 @@ You need Python 3.11, 3.12 or 3.13 and about 400 MB of disk. It works on Windows
 git clone https://github.com/Surajp1602/theballremembers-voice.git
 cd theballremembers-voice
 
-# with uv (recommended)
-uv venv
-uv pip install -e .
+# with uv (recommended: it fetches a compatible Python and the locked versions)
+uv sync
+uv run ballvoice setup     # downloads the Kokoro model files (~350 MB) into models/
 
-# or with plain pip
+# or with plain pip and Python 3.11-3.13
 python -m venv .venv
 # Windows: .venv\Scripts\activate    macOS/Linux: source .venv/bin/activate
 pip install -e .
-
-ballvoice setup        # downloads the Kokoro model files (~350 MB) into models/
+ballvoice setup
 ```
 
-With uv, either activate `.venv` as above or prefix commands with `uv run` (e.g. `uv run ballvoice setup`).
+With uv, prefix commands with `uv run` (e.g. `uv run ballvoice render ...`), or activate `.venv` and drop the prefix. Step-by-step Windows instructions are in [TESTING.md](TESTING.md).
 
 ## Quick start
 
@@ -44,6 +43,8 @@ ballvoice render examples/panenka_short.json    # -> build/tbr-sample-panenka/
 ```
 
 Open `build/tbr-sample-panenka/narration.wav` and listen. That sample is only for testing the tool; its script hasn't been source-checked.
+
+**Testing it properly:** follow [TESTING.md](TESTING.md). `examples/smoke_test.py` runs every feature against `examples/feature_tour.md` (one shot per feature) and `examples/broken_on_purpose.json` (one shot per rule), and prints PASS/FAIL.
 
 ## Making a video's narration
 

@@ -1,0 +1,21 @@
+{
+  "_note": "Every shot breaks a rule on purpose. `ballvoice check` should report all of them, and `ballvoice render` should refuse to start.",
+  "video_id": "tbr-broken-on-purpose",
+  "format": "SHORT",
+  "hook": { "spoken": "This hook is far too long because it keeps on going past the twelve word limit." },
+  "tts": { "engine": "kokoro", "voice": "bm_georg" },
+  "shots": [
+    { "id": "S01", "start": 0.0, "end": 4.0,
+      "tts_text": "In 1950 the underdogs won, and nobody saw it coming." },
+    { "id": "S01", "start": 4.0, "end": 8.0,
+      "tts_text": "Then Müller scored." },
+    { "id": "S03", "start": 10.0, "end": 9.0,
+      "tts_text": "This shot ends before it starts." },
+    { "id": "S04", "start": 10.0, "end": 14.0,
+      "tts_text": "A typo in the markup [pasue:0.5] stops the render." },
+    { "id": "S05", "start": 14.0, "end": 20.0,
+      "tts_text": "This sentence keeps going and going and going well past the eighteen word limit that the master prompt sets for every single line." },
+    { "id": "S06", "start": 20.0, "end": 22.0,
+      "vo": "A line with no tts_text will be silent." }
+  ]
+}

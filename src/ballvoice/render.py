@@ -36,6 +36,7 @@ class Placement:
     end: float
     duration: float
     placed_at: float
+    tail: float = 0.0  # padded silence at the end of the clip
 
     @property
     def ends_at(self) -> float:
@@ -47,14 +48,15 @@ class Placement:
 
     @property
     def overflow(self) -> float:
-        return max(0.0, self.ends_at - self.end)
+        """Seconds the spoken words run past the shot (padded silence doesn't count)."""
+        return max(0.0, self.ends_at - self.tail - self.end)
 
     @property
     def fits(self) -> bool:
         return self.overflow <= FIT_TOLERANCE and self.drift <= FIT_TOLERANCE
 
 
-def plan_timeline(items: list[tuple[str, float, float, float]]) -> list[Placement]:
+def plan_timeline(items: list[tuple[str, float, float, float]], tail: float = 0.0) -> list[Placement]:
     """Place each clip at its shot's start, or right after the previous clip.
 
     `items` are (id, start, end, duration). A clip never overlaps the one
@@ -64,7 +66,7 @@ def plan_timeline(items: list[tuple[str, float, float, float]]) -> list[Placemen
     placements, cursor = [], 0.0
     for shot_id, start, end, duration in sorted(items, key=lambda item: item[1]):
         at = max(start, cursor)
-        placements.append(Placement(shot_id, start, end, duration, at))
+        placements.append(Placement(shot_id, start, end, duration, at, min(tail, duration)))
         cursor = at + duration
     return placements
 
@@ -160,7 +162,8 @@ def render(
 
     by_id = {s.id: s for s in narrated}
     placements = plan_timeline(
-        [(sid, by_id[sid].start, by_id[sid].end, au.seconds(c)) for sid, c in clips.items()]
+        [(sid, by_id[sid].start, by_id[sid].end, au.seconds(c)) for sid, c in clips.items()],
+        tail=config.tail_ms / 1000,
     )
 
     runtime = max([production.runtime] + [p.ends_at for p in placements])

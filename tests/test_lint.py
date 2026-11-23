@@ -70,6 +70,17 @@ def test_structural_errors(tmp_path):
     assert "tts_speed 3.0 is outside" in errors
 
 
+def test_tts_speed_changes_the_estimate(tmp_path):
+    line = "one two three four five six seven eight nine ten"  # 4.0s at 150 wpm
+    production = _production(tmp_path, {"shots": [
+        {"id": "S01", "start": 0, "end": 3, "tts_text": line, "tts_speed": 1.5},
+        {"id": "S02", "start": 3, "end": 7, "tts_text": line, "tts_speed": 0.8},
+    ]})
+    report = lint(production, Config())
+    assert [round(s.estimate, 2) for s in report.shots] == [2.67, 5.0]
+    assert [i.where for i in report.warnings if "for a" in i.message] == ["S02"]
+
+
 def test_bad_voice_is_an_error(tmp_path):
     production = _production(tmp_path, {"shots": [{"id": "S01", "start": 0, "end": 3, "tts_text": "Hi."}]})
     report = lint(production, Config(), voice_override="bm_georg", voice_names=["bm_george"])
