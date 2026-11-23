@@ -191,7 +191,7 @@ A shot can set `"tts_speed"` (0.5–2.0) to slow a reveal or tighten a line with
 
 ## Updating the master prompt
 
-To get PRODUCTION_JSON that suits this tool, replace the **VOICE PRODUCTION** section with:
+The full, current master prompt is in [prompts/MASTER_PROMPT.md](prompts/MASTER_PROMPT.md): paste it into a new chat session to start producing. If you keep your own copy instead, replace its **VOICE PRODUCTION** section with:
 
 ```markdown
 ## VOICE PRODUCTION (free, and licensed for a monetized channel)
