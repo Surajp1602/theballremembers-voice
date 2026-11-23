@@ -73,6 +73,10 @@ def _download(url: str, target: Path, size: int) -> None:
 
 
 def setup(models_dir: Path, force: bool = False) -> None:
+    if models_dir.exists() and not models_dir.is_dir():
+        raise RuntimeError(
+            f"{models_dir} is a file, not a folder. Delete it (or rename it) and run ballvoice setup again."
+        )
     models_dir.mkdir(parents=True, exist_ok=True)
     for name, (expected, size) in FILES.items():
         target = models_dir / name

@@ -1,11 +1,11 @@
 # Kokoro model files (download with: ballvoice setup)
-models/
+/models
 *.onnx
 voices-*.bin
 
 # Rendered audio
-build/
-auditions/
+/build
+/auditions
 *.wav
 *.mp3
 

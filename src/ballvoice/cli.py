@@ -363,7 +363,7 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
         return args.func(args)
-    except (CliError, ModelsMissing, ProductionError, MarkupError, VoiceError,
+    except (CliError, ModelsMissing, ProductionError, MarkupError, VoiceError, RuntimeError,
             RespellingError, FileNotFoundError, ValueError) as error:
         print(f"ballvoice: {error}", file=sys.stderr)
         return 1
