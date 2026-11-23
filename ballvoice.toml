@@ -4,7 +4,7 @@
 [voice]
 # One Kokoro voice ("bm_george") or a weighted blend ("bm_george:60,bm_fable:40").
 # Run `ballvoice audition` to compare, then set the winner here.
-voice = "bm_george:60,bm_fable:40"
+voice = "bm_lewis"
 lang = "en-gb"          # en-gb or en-us
 speed = 1.0             # 0.5 - 2.0; a shot can override with "tts_speed"
 

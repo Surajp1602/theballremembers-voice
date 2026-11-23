@@ -25,7 +25,7 @@ SECTIONS: dict[str, tuple[str, ...]] = {
 @dataclass
 class Config:
     # [voice]
-    voice: str = "bm_george:60,bm_fable:40"
+    voice: str = "bm_lewis"
     lang: str = "en-gb"
     speed: float = 1.0
     # [script]

@@ -144,7 +144,7 @@ def cmd_audition(args) -> int:
     for voice, clip in clips.items():
         au.write_wav(out_dir / f"{slug(voice)}.wav", clip * gain)
     print(f"\nWrote {len(clips)} clips to {out_dir}. Listen, pick one, then set it in ballvoice.toml:")
-    print('  [voice]\n  voice = "bm_george:60,bm_fable:40"')
+    print('  [voice]\n  voice = "bm_lewis"')
     return 0
 
 

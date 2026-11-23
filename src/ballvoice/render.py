@@ -67,7 +67,8 @@ def plan_timeline(items: list[tuple[str, float, float, float]], tail: float = 0.
     for shot_id, start, end, duration in sorted(items, key=lambda item: item[1]):
         at = max(start, cursor)
         placements.append(Placement(shot_id, start, end, duration, at, min(tail, duration)))
-        cursor = at + duration
+        # The next line may start over this clip's padded silence, not its words
+        cursor = at + duration - min(tail, duration)
     return placements
 
 

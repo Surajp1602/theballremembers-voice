@@ -128,9 +128,9 @@ def main() -> int:
     step(f"tts_speed: S09 speaks faster than S08 ({fast_rate * 60:.0f} vs {slow_rate * 60:.0f} wpm)",
          fast_rate > slow_rate)
 
-    step("timing: S10 reported as running long", not shots["S10"]["fits"] and shots["S10"]["overflow"] > 2)
+    step("timing: S10 reported as running long", not shots["S10"]["fits"] and shots["S10"]["overflow"] > 1)
     step("timing: S11 pushed back instead of overlapping",
-         shots["S11"]["drift"] > 1 and shots["S11"]["placed_at"] >= shots["S10"]["placed_at"] + shots["S10"]["duration"] - 0.01)
+         shots["S11"]["drift"] > 1 and shots["S11"]["placed_at"] >= shots["S10"]["placed_at"] + shots["S10"]["duration"] - 0.2)
     step("timing: the other shots fit",
          all(s["fits"] for sid, s in shots.items() if sid not in ("S10", "S11")))
 

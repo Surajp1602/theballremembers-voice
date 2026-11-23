@@ -106,7 +106,7 @@ ballvoice audition                                        # a shortlist, as WAVs
 ballvoice audition --voices bm_george "bm_george:70,bm_lewis:30" --text "I was there."
 ```
 
-Set the winner in `ballvoice.toml` under `[voice]`. A production can also name a voice in `tts.voice`, and `--voice` on the command line beats both. The default, `bm_george:60,bm_fable:40`, is a starting point: audition before your first upload, because the blend *is* the channel's voice.
+Set the winner in `ballvoice.toml` under `[voice]`. A production can also name a voice in `tts.voice`, and `--voice` on the command line beats both. The channel's voice is `bm_lewis` (British male, chosen for the historical stories). Audition again before changing it, because this voice *is* the channel's voice.
 
 ## Output
 
@@ -182,7 +182,7 @@ All optional; paths are relative to the file.
 
 | section | setting | default |
 |---|---|---|
-| `[voice]` | `voice`, `lang`, `speed` | `bm_george:60,bm_fable:40`, `en-gb`, `1.0` |
+| `[voice]` | `voice`, `lang`, `speed` | `bm_lewis`, `en-gb`, `1.0` |
 | `[script]` | `words_per_minute`, `max_sentence_words`, `max_hook_words` | `150`, `18`, `12` |
 | `[render]` | `sentence_pause`, `clause_pause`, `tail_ms`, `peak_dbfs`, `fps` | `0.25`, `0.1`, `120`, `-1.0`, `30` |
 | `[paths]` | `models_dir`, `lexicon`, `out_dir` | `models`, `lexicon.json`, `build` |
@@ -195,7 +195,7 @@ To get PRODUCTION_JSON that suits this tool, replace the **VOICE PRODUCTION** se
 
 ```markdown
 ## VOICE PRODUCTION (free, and licensed for a monetized channel)
-- Narration is rendered with ballvoice (Kokoro-82M, Apache-2.0). Voice: [YOUR VOICE BLEND, e.g. bm_george:60,bm_fable:40]. Never use the ElevenLabs free plan (no commercial licence) or F5-TTS / XTTS-v2 (non-commercial model weights).
+- Narration is rendered with ballvoice (Kokoro-82M, Apache-2.0). Voice: bm_lewis. Never use the ElevenLabs free plan (no commercial licence) or F5-TTS / XTTS-v2 (non-commercial model weights).
 - Write for TTS: sentences of 18 words or fewer. "..." for a held beat, a dash for a pivot, a full stop before a reveal. For an exact hold write [pause:0.4] (seconds); at most two per Short.
 - In tts_text, spell numbers and years the way they should be spoken ("nineteen fifty", "five thousand to one"). On-screen text keeps digits ("1950", "5000-1").
 - Keep the real spelling of every name in tts_text. List every non-English name in PRONUNCIATIONS as {"word", "say_as"}: say_as is a respelling with hyphenated syllables and the stressed syllable in CAPITALS, using Wikipedia's respelling key (ah, ay, ee, eye, oh, oo, ow, oy, uh, ur, zh, kh), e.g. {"word": "Panenka", "say_as": "PAH-nen-kah"}. Add "ipa" only when certain of it.
@@ -204,7 +204,7 @@ To get PRODUCTION_JSON that suits this tool, replace the **VOICE PRODUCTION** se
 ```
 
 In the PRODUCTION_JSON schema, change the pronunciations line to
-`"pronunciations": [{"word": "", "say_as": "", "ipa": ""}],` and set `"tts": {"engine": "kokoro", "voice": "<your blend>", "words_per_minute": 150}`.
+`"pronunciations": [{"word": "", "say_as": "", "ipa": ""}],` and set `"tts": {"engine": "kokoro", "voice": "bm_lewis", "words_per_minute": 150}`.
 
 ## Development
 

@@ -28,6 +28,11 @@ def test_padded_silence_does_not_count_as_running_long():
     assert placement.overflow == pytest.approx(0.18) and not placement.fits
 
 
+def test_next_line_may_start_over_padded_silence():
+    s1, s2 = plan_timeline([("S01", 0.0, 4.0, 4.1), ("S02", 4.0, 8.0, 2.0)], tail=0.12)
+    assert s2.placed_at == pytest.approx(4.0) and s2.fits
+
+
 def test_shots_are_placed_in_time_order():
     placements = plan_timeline([("S02", 5.0, 9.0, 1.0), ("S01", 0.0, 5.0, 1.0)])
     assert [p.id for p in placements] == ["S01", "S02"]
@@ -35,7 +40,7 @@ def test_shots_are_placed_in_time_order():
 
 def test_repo_config_loads_with_absolute_paths():
     config = load_config(ROOT / "ballvoice.toml")
-    assert config.voice == "bm_george:60,bm_fable:40"
+    assert config.voice == "bm_lewis"
     assert config.models_dir == (ROOT / "models").resolve()
     assert config.model_path.name == "kokoro-v1.0.onnx"
 
